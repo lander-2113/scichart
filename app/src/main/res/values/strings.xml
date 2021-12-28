@@ -1,0 +1,6 @@
+<resources>
+    <string name="app_name">scichart</string>
+    <string name="line">Line Chart</string>
+    <string name="candle">Candle Stick</string>
+
+</resources>
