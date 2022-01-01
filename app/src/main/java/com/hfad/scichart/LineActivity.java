@@ -25,8 +25,6 @@ import java.util.Timer;
 import java.util.TimerTask;
 
 public class LineActivity extends AppCompatActivity {
-
-
     Random generator;
     private Double open;
     @Override
@@ -133,7 +131,6 @@ public class LineActivity extends AppCompatActivity {
         long delay = 1000;
         long interval = 1000;
         timer.schedule(updateDataTask, delay, interval);
-
         // tenderable sereis
         final IRenderableSeries lineSeries = sciChartBuilder.newLineSeries()
                 .withDataSeries(lineData)
@@ -141,7 +138,5 @@ public class LineActivity extends AppCompatActivity {
                 .build();
 
         surface.getRenderableSeries().add(lineSeries);
-        // Add the modifier to the surface
-        surface.zoomExtents();
     }
 }

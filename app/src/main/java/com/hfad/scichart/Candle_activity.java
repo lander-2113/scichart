@@ -118,10 +118,10 @@ public class Candle_activity extends AppCompatActivity {
                         .build());
         Collections.addAll(surface.getChartModifiers(), chartModifiers);
 
-        final Double[] open = {new Double(-30.0d)};
-        final Double[] close = {new Double(30.6)};
-        final Double[] low = {new Double(-30)};
-        final Double[] high = {new Double(30.0d)};
+        final Double[] open = {new Double(MainActivity.shareData.getDailyShareValue())};
+        final Double[] close = {new Double(MainActivity.shareData.getClosingValue())};
+        final Double[] low = {new Double(MainActivity.shareData.getTodayLow())};
+        final Double[] high = {new Double(MainActivity.shareData.getTodayHigh())};
 
 
         Double[] variations1 = {0.30, 0.15, 0.25, .005};
@@ -165,7 +165,5 @@ public class Candle_activity extends AppCompatActivity {
         long delay = 1000;
         long interval = 10;
         timer.schedule(updateDataTask, delay, interval);
-
-
     }
 }

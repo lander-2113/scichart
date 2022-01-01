@@ -64,15 +64,17 @@ public class MainActivity extends AppCompatActivity {
     EditText ehigh;
     EditText eclose;
 
+    // flag to know if the initial values has been set or not
+    boolean flag;
+
     Button btn_chart;
     Button btn_update;
-    String[] values;
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-
+        flag = false;
         String key = "ks0JpEeMVmiTNnl2oRc+fVUTui7nP/e2NJYSvI5hUzO0P4eElRkqAzKxE8Ff6MdK/A1jNbngroNH4VncT4thsMbIfTcgK9V9FweOhvCTwMsdNfwRFUSJjpZhVMmXRrettjeTgudOa7oO4vdXNHZA+rJ7V+qm89ZD3oEeRZJuoh1gfvWGVXLfT+O/ARstLUTEj2bQFLcbMUu/2083DKb1HO6DetIPbK7N0oDbwOIhMr6F3g0QiORiFwxp83MA3bJPY2TIFKE5Jx4QRC9ljjharyCgku94NvaPcQRnsQ7a9LrLK4OhE2fbFUaptwNtsuRN6C36Nxw7eyxT8JTp0U+goMGuaiAWEEkZOBQdkc0cjdbIXM23Qj7nwO2cPJ4NrQ/cskO1g7bl4d7RqV6sQ85a0DPl/dSR6BtzKPX8wLUwBlgSDBOVHWHTJrL+vBgKczwLFaCa358Tn39sf34iXnpmP4sBgWVKEBrjOak7OEqNYseDp+0EGMyHsZpsEaMOMLD9IWNqnpDwYg8nuh8zJd80laCOw5wzHNVTk4rK9LnS6qGRVSfOneiZ3KssihndeyUpZGF5pRRkFA==";
         try {
             com.scichart.charting.visuals.SciChartSurface.setRuntimeLicenseKey(key);
@@ -112,6 +114,7 @@ public class MainActivity extends AppCompatActivity {
             }
 
             shareData = new ShareData(open, low, high, close);
+            flag = true;
 
         } catch(Exception e){
             Log.e("input", "invalid value entered", e);
@@ -120,13 +123,23 @@ public class MainActivity extends AppCompatActivity {
     }
 
     public void seeLineCharts(View view) {
-        Intent intent = new Intent(getApplicationContext(), LineActivity.class);
-        startActivity(intent);
+        if(flag){
+            Intent intent = new Intent(getApplicationContext(), LineActivity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getApplicationContext(), "Press the set button.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
     public void seeCandle(View view) {
-        Intent intent = new Intent(getApplicationContext(), Candle_activity.class);
-        startActivity(intent);
+        if(flag){
+            Intent intent = new Intent(getApplicationContext(), Candle_activity.class);
+            startActivity(intent);
+        }else{
+            Toast.makeText(getApplicationContext(), "Press the set button.", Toast.LENGTH_SHORT).show();
+        }
+
     }
 
 }
